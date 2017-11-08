@@ -1,0 +1,29 @@
+table, th, td, tr {
+    font-family: inherit;
+}
+
+table {
+    margin: 15px 20px;
+    border: 1px solid #ff88c5;
+}
+
+.table-div {
+    /* display: flex;
+    justify-content: center; */
+    margin: auto;
+    text-align: center;
+    overflow-x: auto;
+}
+
+th, tr, td {
+    padding: 5px 15px;
+}
+
+header {
+    background-color: #ff88c5e1;
+    padding: 5px;
+}
+
+h1 {
+    font-size: 150%;
+}

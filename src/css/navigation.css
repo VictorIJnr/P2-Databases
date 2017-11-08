@@ -1,0 +1,27 @@
+.navigation {
+    margin: 15px 25px;
+
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+
+    color: inherit;
+    font-family: inherit;
+    text-align: center;
+}
+
+.navigation ul {
+    list-style: none;
+    
+    display: flex;
+    font-family: inherit;
+    flex-direction: row;
+}
+
+.navigation li {
+    margin-left: 25px;
+    position: relative;
+}
