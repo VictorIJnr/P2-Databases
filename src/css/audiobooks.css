@@ -4,7 +4,7 @@ table, th, td, tr {
 
 table {
     margin: 15px 20px;
-    border: 1px solid #ff88c5;
+    border: 1px solid #000;
 }
 
 .table-div {
@@ -20,10 +20,52 @@ th, tr, td {
 }
 
 header {
-    background-color: #ff88c5e1;
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 5px;
 }
 
 h1 {
     font-size: 150%;
+}
+
+.book-entry {
+    position: relative;
+    padding: 20px;
+    box-sizing: content-box;
+
+    border: 2px solid #444;
+    
+    display: inline-flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    margin-left: 2.5vw;
+}
+
+.book-entry ul {
+    list-style: none;
+    font-size: 95%;
+}
+
+.book-title {
+    font-size: 175%;
+    font-weight: 100;
+}
+
+.author {
+    margin-bottom: 15px;
+    font-size: 150%;
+    box-sizing: content-box;
+    font-weight: 300;
+}
+
+.author:after {
+    content: '';
+    box-sizing: content-box;
+    position: absolute;
+    border-bottom: 3px solid #444;
+    left: 0%;
+    top: 30%;
+    width: 100%;
 }
