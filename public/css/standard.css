@@ -18,7 +18,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #ff88c5;
+    background-color: #555;
 }
 
 body::-webkit-scrollbar-track {
@@ -41,7 +41,6 @@ header {
 }
 
 a {
-    padding: 2px;
     position: relative;
     background: none;
     border: none;
@@ -53,7 +52,11 @@ a {
     text-decoration: none;
 }
 
-a::after {
+.navigation a {
+    padding: 2px;
+}
+
+.navigation a::after {
     content: '';
     position: absolute;
     bottom: 0;

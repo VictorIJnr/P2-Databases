@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+var queries = {};
 
 var connection = mysql.createConnection({
     host: "vi4.host.cs.st-andrews.ac.uk",
@@ -14,3 +15,12 @@ connection.connect( function (err) {
     }
     console.log("Connected");
 });
+
+queries.allBooks = function(res) {
+    connection.query("SELECT * FROM Books", function (err, rows) {
+        if (err) throw err;
+        res.render('audiobooks', {rows: rows});
+    });
+}
+
+module.exports = queries;

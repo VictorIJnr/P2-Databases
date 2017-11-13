@@ -29,7 +29,7 @@ h1 {
 }
 
 #books {
-    display: flex;
+    display: block;
     justify-content: center;
 }
 
@@ -40,12 +40,12 @@ h1 {
 
     border: 2px solid #444;
     
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: left;
 
-    margin-left: 2.5vw;
+    margin: 2vh 2.5vw;
 }
 
 .book-entry ul {

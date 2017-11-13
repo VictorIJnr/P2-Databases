@@ -1,0 +1,24 @@
+body, html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    font-size: 25px;
+}
+
+span {
+    color: red;
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 200%;
+}
