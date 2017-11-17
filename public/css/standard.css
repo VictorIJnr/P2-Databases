@@ -52,23 +52,47 @@ a {
     text-decoration: none;
 }
 
-.navigation a {
-    padding: 2px;
+.accounts {
+    display: block;
+    position: absolute;
+    font-size: 175%;
+    top: 66%;
 }
 
-.navigation a::after {
+.left {
+    left: 2%;
+}
+
+.right {
+    right: 2%;
+}
+
+.navigation a, .accounts {
+    padding: 0px 5px;
+}
+
+.navigation a::after, .accounts::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: -5px;
+    left: 0;
     box-sizing: inherit;
     
     border: 1px solid transparent;
 
-    width: 0%;
     height: 0%;
+}
 
+.navigation a::after {
+    width: 0%;
+    
     transition: width 0.5s ease, height 0.5s ease, border-color 0.5s ease-in-out;
+}
+
+.accounts::after {
+    width: 100%;
+    
+    transition: height 0.5s 0.25s ease-out, border-color 1s ease-in-out;
 }
 
 a:hover::after {
