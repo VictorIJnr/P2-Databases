@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 
 var index = require('./routes/index');
 var audiobooks = require('./routes/audiobooks');
+var authors = require('./routes/authors');
 var signup = require("./routes/signup");
 var users = require('./routes/users');
 
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/audiobooks', audiobooks);
+app.use('/authors', authors);
 app.use('/users', users);
 app.use('/signup', signup);
 

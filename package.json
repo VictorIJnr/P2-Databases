@@ -7,7 +7,10 @@
   },
   "dependencies": {
     "debug": "~2.6.9",
+    "ejs": "^2.5.7",
     "express": "~4.15.5",
+    "merge-descriptors": "^1.0.1",
+    "mysql": "^2.15.0",
     "serve-favicon": "~2.4.5"
   }
 }

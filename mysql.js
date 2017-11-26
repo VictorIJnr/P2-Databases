@@ -23,4 +23,20 @@ queries.allBooks = function(res) {
     });
 }
 
+queries.authorBooks = function(res, author) {
+    connection.query("SELECT Contributer.ContributerID, Contributer.Name, Contributer.Biography, Books.ISBN, Books.Title, "
+                    + "Books.`Publisher Name`, Books.Narrator, Books.`Running Time`, Books.`Age Rating`, Books.Price "
+                    + "FROM vi4_cs3101_db.Contributer as Contributer "
+                    + "INNER JOIN vi4_cs3101_db.Authors as Authors "
+                    + "ON Contributer.ContributerID = Authors.ContributerID "
+                    + "INNER JOIN vi4_cs3101_db.Books "
+                    + "ON Books.ISBN = Authors.ISBN "
+                    + "WHERE UPPER(Contributer.Name) = UPPER(\"" + author + "\") "
+                    + "ORDER BY Contributer.ContributerID;", 
+    function(err, rows) {
+        if (err) throw err;
+        res.render("authors", {rows: rows});
+    });
+}
+
 module.exports = queries;
