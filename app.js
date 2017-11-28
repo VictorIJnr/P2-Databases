@@ -10,28 +10,23 @@ var users = require('./routes/users');
 
 var app = express();
 var indexPath = "/CS3101";
-var resourcePath = "CS3101";
 
 // view engine setup
 app.set('views', viewPath = path.join(__dirname, 'views'));
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
-console.log("Views");
-console.log(viewPath);
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(publicPath = path.join(__dirname, 'public')));
 
-console.log("Public");
-console.log(publicPath);
-
 app.use('/CS3101', index);
-app.use(indexPath + '/audiobooks', audiobooks);
+app.use(bookPath = (indexPath + '/audiobooks'), audiobooks);
 app.use(indexPath + '/authors', authors);
 app.use(indexPath + '/users', users);
 app.use(indexPath + '/signup', signup);
+
+console.log(bookPath);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
