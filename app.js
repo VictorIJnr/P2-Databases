@@ -26,8 +26,6 @@ app.use(indexPath + '/authors', authors);
 app.use(indexPath + '/users', users);
 app.use(indexPath + '/signup', signup);
 
-console.log(bookPath);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
