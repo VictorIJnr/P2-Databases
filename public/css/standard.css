@@ -40,6 +40,10 @@ header {
     color: #fff;
 }
 
+a, a:active, a:focus {
+    outline: 0;
+}
+
 a {
     position: relative;
     background: none;
