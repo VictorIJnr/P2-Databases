@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var audiobooks = require('./routes/audiobooks');
 var authors = require('./routes/authors');
 var popular = require('./routes/popular');
+var purchases = require('./routes/purchases');
 var signup = require("./routes/signup");
 var users = require('./routes/users');
 
@@ -30,6 +31,7 @@ app.use('/CS3101', index);
 app.use(indexPath + '/audiobooks', audiobooks);
 app.use(indexPath + '/authors', authors);
 app.use(indexPath + '/popular', popular);
+app.use(indexPath + '/purchases', purchases);
 app.use(indexPath + '/users', users);
 app.use(indexPath + '/signup', signup);
 

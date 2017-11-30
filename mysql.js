@@ -17,9 +17,44 @@ connection.connect( function (err) {
 });
 
 queries.bookReviews = function(res, isbn) {
-    connection.query("SELECT * FROM Books", function (err, rows) {
+    connection.query("SELECT Reviews.Rating, Reviews.Comment, "
+        + "Customer.Name, Books.ISBN, Books.Title, " 
+        + "GROUP_CONCAT(Distinct Contributer.Name SEPARATOR ', ') as Authors "  
+        + "FROM vi4_cs3101_db.Reviews as Reviews " 
+        + "INNER JOIN vi4_cs3101_db.Books as Books " 
+        + "ON Books.ISBN = Reviews.ISBN " 
+        + "INNER JOIN vi4_cs3101_db.Authors as Authors " 
+        + "ON Books.ISBN = Authors.ISBN " 
+        + "INNER JOIN vi4_cs3101_db.Contributer as Contributer " 
+        + "ON Contributer.ContributerID = Authors.ContributerID " 
+        + "INNER JOIN vi4_cs3101_db.Customer as Customer " 
+        + "ON Customer.CustomerID = Reviews.CustomerID "
+        + "WHERE Reviews.ISBN = \'" + isbn + "\'"
+        + "GROUP BY Reviews.CustomerID;", 
+    function (err, rows) {
         if (err) throw err;
-        res.render('audiobooks', {rows: rows});
+        res.render('reviews', {rows: rows});
+    });
+}
+
+queries.buyBook = function(res, isbn) {
+    connection.query("SELECT Reviews.Rating, Reviews.Comment, "
+        + "Customer.Name, Books.ISBN, Books.Title, " 
+        + "GROUP_CONCAT(Distinct Contributer.Name SEPARATOR ', ') as Authors "  
+        + "FROM vi4_cs3101_db.Reviews as Reviews " 
+        + "INNER JOIN vi4_cs3101_db.Books as Books " 
+        + "ON Books.ISBN = Reviews.ISBN " 
+        + "INNER JOIN vi4_cs3101_db.Authors as Authors " 
+        + "ON Books.ISBN = Authors.ISBN " 
+        + "INNER JOIN vi4_cs3101_db.Contributer as Contributer " 
+        + "ON Contributer.ContributerID = Authors.ContributerID " 
+        + "INNER JOIN vi4_cs3101_db.Customer as Customer " 
+        + "ON Customer.CustomerID = Reviews.CustomerID "
+        + "WHERE Reviews.ISBN = \'" + isbn + "\'"
+        + "GROUP BY Reviews.CustomerID;", 
+    function (err, rows) {
+        if (err) throw err;
+        res.render('reviews', {rows: rows});
     });
 }
 
@@ -59,7 +94,7 @@ queries.popularBooks = function(res) {
     + "ON Contributer.ContributerID = Authors.ContributerID "
     + "GROUP BY Popular.Title "
     + "ORDER BY Popular.`Number Purchases` DESC "
-    + "LIMIT 5;", 
+    + "LIMIT 10;", 
     function(err, rows) {
         if (err) throw err;
         res.render("popular", {rows: rows});

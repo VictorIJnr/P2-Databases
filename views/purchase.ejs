@@ -29,7 +29,7 @@
         <% include ./partials/header.ejs %>
         
         <section id="all-books">
-            <h1>Reviews for <%= rows[0].Title %></h1>
+            <h1>Purchasing&#58;&nbsp;<%= rows[0].Title %></h1>
             <% rows.forEach(function(row) { %>
                 <div class="book-entry">
                     <h3 class="">Authors&#58;&nbsp;&nbsp;&nbsp;&nbsp;<%=row.Authors%></h3>
