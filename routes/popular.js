@@ -7,9 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    console.log(req.body);
-    if (req.body.reviews) mysql.bookReviews(res, req.body.review);
-    if (req.body.purchase) mysql.buyBook(res, req.body.review);
+    if (req.body.reviews) mysql.bookReviews(res, req.body.isbn);
+    if (req.body.purchase) {
+        var isbn = encodeURIComponent(req.body.isbn);
+        res.redirect("/CS3101/purchases?isbn=" + isbn);
+    }
 });
 
 module.exports = router;

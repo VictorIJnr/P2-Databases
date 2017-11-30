@@ -27,18 +27,6 @@
     <body>
         <!--Header-->
         <% include ./partials/header.ejs %>
-        
-        <section id="all-books">
-            <h1>Purchasing&#58;&nbsp;<%= rows[0].Title %></h1>
-            <% rows.forEach(function(row) { %>
-                <div class="book-entry">
-                    <h3 class="">Authors&#58;&nbsp;&nbsp;&nbsp;&nbsp;<%=row.Authors%></h3>
-                    <h3 class="">ISBN&#58;&nbsp;&nbsp;&nbsp;&nbsp;<%=row.ISBN%></h3>
-                    <h3 class="">Review By&#58;&nbsp;&nbsp;&nbsp;&nbsp;<%=row.Name%></h3>
-                    <h3 class="">Rating&#58;&nbsp;&nbsp;&nbsp;&nbsp;<%=row.Rating%></h3>
-                    <p><%=row.Comment%></p>
-                </div>
-            <% }); %>
-        </section>
+        <h1>HI THERE</h1>
     </body> 
 </html>
