@@ -3,9 +3,11 @@ var router = express.Router();
 var mysql = require('../mysql');
 
 router.get("/", function(req, res, next) {
-    console.log(req.query.isbn);
-    // mysql.buyBook(res, req.body.isbn);
-    res.render('purchases');
+    mysql.getBook(res, req.query.isbn);
+});
+
+router.post("/", function(req, res, next) {
+    mysql.buyBook(res, req.body.isbn, req.body.email)
 });
 
 module.exports = router;
