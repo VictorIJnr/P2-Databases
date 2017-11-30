@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('reviews', function(req, res, next) {
-
+    res.render
 });
 
 module.exports = router;

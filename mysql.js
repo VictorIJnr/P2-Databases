@@ -63,7 +63,6 @@ queries.popularBooks = function(res) {
     function(err, rows) {
         if (err) throw err;
         res.render("popular", {rows: rows});
-        console.log(rows);
     });
 }
 
