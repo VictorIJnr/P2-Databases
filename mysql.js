@@ -16,6 +16,13 @@ connection.connect( function (err) {
     console.log("Connected");
 });
 
+queries.bookReviews = function(res, isbn) {
+    connection.query("SELECT * FROM Books", function (err, rows) {
+        if (err) throw err;
+        res.render('audiobooks', {rows: rows});
+    });
+}
+
 queries.allBooks = function(res) {
     connection.query("SELECT * FROM Books", function (err, rows) {
         if (err) throw err;
@@ -25,7 +32,7 @@ queries.allBooks = function(res) {
 
 queries.authorBooks = function(res, author) {
     connection.query("SELECT Contributer.ContributerID, Contributer.Name, Contributer.Biography, Books.ISBN, Books.Title, "
-                    + "Books.`Publisher Name`, Books.Narrator, Books.`Running Time`, Books.`Age Rating`, Books.Price "
+                    + "Books.`Publisher Name`, Books.`Publication Date`, Books.Narrator, Books.`Running Time`, Books.`Age Rating`, Books.Price "
                     + "FROM vi4_cs3101_db.Contributer as Contributer "
                     + "INNER JOIN vi4_cs3101_db.Authors as Authors "
                     + "ON Contributer.ContributerID = Authors.ContributerID "
@@ -35,7 +42,28 @@ queries.authorBooks = function(res, author) {
                     + "ORDER BY Contributer.ContributerID;", 
     function(err, rows) {
         if (err) throw err;
-        res.render("authors", {rows: rows});
+        res.render("viewauthor", {author: author, rows: rows});
+    });
+}
+
+queries.popularBooks = function(res) {
+    connection.query("SELECT Popular.Title, Popular.ISBN, Popular.`Number Purchases`, Books.Price, "
+    + "Books.`Publisher Name`, Books.`Publication Date`, Books.Narrator, "
+    + "Books.`Running Time`, Books.`Age Rating`, "
+    + "GROUP_CONCAT(Contributer.Name SEPARATOR ', ') as Authors FROM vi4_cs3101_db.`Most Purchased` as Popular "
+    + "INNER JOIN vi4_cs3101_db.Books as Books " 
+    + "ON Books.ISBN = Popular.ISBN "
+    + "INNER JOIN vi4_cs3101_db.Authors as Authors "
+    + "ON Books.ISBN = Authors.ISBN "
+    + "INNER JOIN vi4_cs3101_db.Contributer as Contributer "
+    + "ON Contributer.ContributerID = Authors.ContributerID "
+    + "GROUP BY Popular.Title "
+    + "ORDER BY Popular.`Number Purchases` DESC "
+    + "LIMIT 5;", 
+    function(err, rows) {
+        if (err) throw err;
+        res.render("popular", {rows: rows});
+        console.log(rows);
     });
 }
 

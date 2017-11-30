@@ -1,0 +1,80 @@
+<html>  
+    <head>
+        <title>Databases P2</title>
+            
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!--Materialize CSS-->
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+            
+
+        <% include ./partials/headercss.ejs%>
+        <link href="/css/standard.css" rel="stylesheet">
+        <link href="/css/books.css" rel="stylesheet">
+        <link href="/css/popular.css" rel="stylesheet">
+        <link href="/css/ionicons.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+
+        <script src="/js/popular.js"></script>
+    </head>
+    
+    <body>  
+        <% include ./partials/header.ejs %>
+        <section id="intro" class="parallax-container popular">
+            <div class="parallax">
+                <img src="https://static.pexels.com/photos/6399/woman-girl-technology-music.jpg" alt="OOPS">
+            </div>
+            <div class="overlay popular-overlay">
+                <h2>The 10 Most Popular Books</h2>
+            </div>
+        </section>
+
+        <% var pictures = ["https://static.pexels.com/photos/7424/pexels-photo.jpg",
+        "https://static.pexels.com/photos/247899/pexels-photo-247899.jpeg",
+        "https://static.pexels.com/photos/7422/pexels-photo.jpg",
+        "https://static.pexels.com/photos/7427/pexels-photo.jpg",
+        "https://static.pexels.com/photos/159872/book-open-pages-literature-159872.jpeg",
+        "https://static.pexels.com/photos/217661/pexels-photo-217661.jpeg",
+        "https://static.pexels.com/photos/204474/pexels-photo-204474.jpeg",
+        "https://static.pexels.com/photos/7812/pexels-photo.jpg"];
+        var i = 0;
+        rows.forEach(function(row) { %>
+            <section class="parallax-container popular book-entry">
+                <div class="parallax">
+                    <img src=<%= pictures[i] %> alt="OOPS">
+                </div>
+                <div class="overlay popular-overlay">
+                    <h2 class="book-title"><%=row.Title%></h2>
+                    <%
+                        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                        row["Publication Date"] = row["Publication Date"].toLocaleDateString("en-US", options);
+                        row["Running Time"] = row["Running Time"].substring(0, 8);
+                    %>
+                    <ul>
+                        <li><strong>ISBN</strong> - <%=row.ISBN%></li>
+                        <li><strong>Author(s)</strong> - <%=row.Authors%></li>
+                        <li><strong>Publisher</strong> - <%=row["Publisher Name"]%></li>
+                        <li><strong>Publication Date</strong> - <%=row["Publication Date"]%></li>
+                        <li><strong>Number Purchases</strong> - <%=row["Number Purchases"]%></li>
+                        <li><strong>Narrator</strong> - <%=row.Narrator%></li>
+                        <li><strong>Running Time</strong> - <%=row["Running Time"]%></li>
+                        <li><strong>Age Rating</strong> - <%=row["Age Rating"]%></li>
+                        <li><strong>Price</strong> - <%=row.Price%></li>
+                    </ul>
+
+                    <form href="reviews" id="search-form" method="POST">
+                        <input id="search" name="review" type="text" placeholder="" 
+                            style="display: none;" value=<%=row.ISBN %>>
+                        <input type="submit" value="View Review">
+                    </form> 
+                </div>
+            </section>
+        <% i++;
+        }); %>
+
+    </body>
+</html>

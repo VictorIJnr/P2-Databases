@@ -6,17 +6,20 @@
         <% include ./partials/headercss.ejs%>
         <link href="/css/standard.css" rel="stylesheet">
         <link href="/css/authors.css" rel="stylesheet">
+        <link href="/css/ionicons.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+
+        <!-- <script src="/js/authors.js"></script> -->
     </head>
     
     <body>  
         <% include ./partials/header.ejs %>
 
-        <section id="search">
-            <form href="//" id="search-form" action="POST">
-                <input id="search" type="text" placeholder="Find an author">
-                <i class="ion-ios-search-strong"></i>
+        <section>
+            <form href="//" id="search-form" method="POST">
+                <input id="search" name="author" type="text" placeholder="Find an author">
+                <input type="submit" value="Search">
             </form> 
         </section>
     </body>

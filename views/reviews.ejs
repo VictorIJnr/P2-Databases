@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Databases P2</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="../js/index.js"></script> -->
+
+        <% include ./partials/headercss.ejs%>
+
+        <link href="/css/standard.css" rel="stylesheet">
+        <link href="/css/header.css" rel="stylesheet">
+        <link href="/css/audiobooks.css" rel="stylesheet">
+        <link href="/css/books.css" rel="stylesheet">
+        <link href="/css/navigation.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+    </head>
+
+    <body>
+        <!--Header-->
+        <% include ./partials/header.ejs %>
+        
+        <section id="all-books">
+                <h1>Reviews for <%= book %></h1>
+                <p><%= rows[0].Biography %></p>
+                <% rows.forEach(function(row) { %>
+                    <div class="book-entry">
+                        <h2 class="book-title"><%=row.Title%></h2>
+                        <%
+                            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                            row["Publication Date"] = row["Publication Date"].toLocaleDateString("en-US", options);
+                            row["Running Time"] = row["Running Time"].substring(0, 8);
+                        %>
+                        <ul>
+                            <li><strong>ISBN</strong> - <%=row.ISBN%></li>
+                            <li><strong>Publisher</strong> - <%=row["Publisher Name"]%></li>
+                            <li><strong>Publication Date</strong> - <%=row["Publication Date"]%></li>
+                            <li><strong>Narrator</strong> - <%=row.Narrator%></li>
+                            <li><strong>Running Time</strong> - <%=row["Running Time"]%></li>
+                            <li><strong>Age Rating</strong> - <%=row["Age Rating"]%></li>
+                            <li><strong>Price</strong> - £<%=row.Price%></li>
+                        </ul>
+                    </div>
+                <% }); %>
+            </section>
+    </body> 
+</html>
