@@ -10,6 +10,7 @@
         <link href="/css/standard.css" rel="stylesheet">
         <link href="/css/header.css" rel="stylesheet">
         <link href="/css/audiobooks.css" rel="stylesheet">
+        <link href="/css/books.css" rel="stylesheet">
         <link href="/css/purchases.css" rel="stylesheet">
         <link href="/css/navigation.css" rel="stylesheet">
 
@@ -17,6 +18,7 @@
         <link href="/P2 - Front-end Design/public/css/standard.css" rel="stylesheet">
         <link href="/P2 - Front-end Design/public/css/header.css" rel="stylesheet">
         <link href="/P2 - Front-end Design/public/css/audiobooks.css" rel="stylesheet">
+        <link href="/P2 - Front-end Design/public/css/books.css" rel="stylesheet">
         <link href="/P2 - Front-end Design/public/css/purchases.css" rel="stylesheet">
         <link href="/P2 - Front-end Design/public/css/navigation.css" rel="stylesheet">
 
@@ -27,10 +29,32 @@
     <body>
         <!--Header-->
         <% include ./partials/header.ejs %>
+        <% rows.forEach(function(row) { %>
+            <section class="book-entry">
+                <h2 class="book-title"><%=row.Title%></h2>
+                <%
+                    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    row["Publication Date"] = row["Publication Date"].toLocaleDateString("en-US", options);
+                    row["Running Time"] = row["Running Time"].substring(0, 8);
+                %>
+                <ul>
+                    <li><strong>ISBN</strong> - <%=row.ISBN%></li>
+                    <li><strong>Author(s)</strong> - <%=row.Authors%></li>
+                    <li><strong>Publisher</strong> - <%=row["Publisher Name"]%></li>
+                    <li><strong>Publication Date</strong> - <%=row["Publication Date"]%></li>
+                    <li><strong>Narrator</strong> - <%=row.Narrator%></li>
+                    <li><strong>Running Time</strong> - <%=row["Running Time"]%></li>
+                    <li><strong>Age Rating</strong> - <%=row["Age Rating"]%></li>
+                    <li><strong>Price</strong> - <%=row.Price%></li>
+                </ul>
+            </section>
+        <% }); %>
         <form method="POST">
             <input required name="email" type="text" placeholder="Enter Your Email">
             <input readonly name="isbn" type="text" value=<%=isbn%>>
             <input type="submit" name="purchase" value="Purchase Book">
         </form> 
+
+
     </body> 
 </html>

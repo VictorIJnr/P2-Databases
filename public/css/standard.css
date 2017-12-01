@@ -57,6 +57,10 @@ a {
     text-decoration: none;
 }
 
+input[type=submit]:hover {
+    cursor: pointer;
+}
+
 .accounts {
     display: block;
     position: absolute;
@@ -79,7 +83,7 @@ a {
 .navigation a::after, .accounts::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -1.5px;
     left: 0;
     box-sizing: inherit;
     

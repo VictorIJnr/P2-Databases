@@ -16,6 +16,31 @@ connection.connect( function (err) {
     console.log("Connected");
 });
 
+queries.signUp = function(res, user) {
+    connection.query("INSERT INTO `vi4_cs3101_db`.`Customer` (`Name`, `DOB`, `email`, `password`) "
+                    + "VALUES (\'" + user.name + "\', \'" + formatDate(user.dob) + "\', "
+                    + "\'" + user.email + "\', \'" + user.password + "\');",
+    function(err, rows) {
+        if (err) throw err;
+        res.render('newuser');
+    });
+}
+
+queries.login = function(res, email, password, req) {
+    connection.query("SELECT Customer.CustomerID, Customer.Name, Customer.email "
+                    + "FROM vi4_cs3101_db.Customer as Customer "
+                    + "WHERE Customer.email = \'" + email + "\' AND "
+                    + "Customer.password = \'" + password + "\' "
+                    + "GROUP BY Customer.Name;",
+    function(err, rows) {
+        if (err) throw err;
+        req.session.userID = rows[0].CustomerID;
+        req.session.username = rows[0].Name;
+        req.session.userEmail = rows[0].email;
+        res.render('successlogin', {rows: rows, user: req.session.username});
+    });
+}
+
 queries.bookReviews = function(res, isbn) {
     connection.query("SELECT Reviews.Rating, Reviews.Comment, "
         + "Customer.Name, Books.ISBN, Books.Title, " 

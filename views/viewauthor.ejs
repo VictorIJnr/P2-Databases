@@ -32,7 +32,7 @@
         <section id="searchbar">
             <form href="//" id="search-form" method="POST">
                 <input id="search" name="author" type="text" placeholder="Find an author">
-                <input type="submit" value="Search">
+                <input id="author-search" type="submit" value="Search">
             </form> 
         </section>
 
@@ -56,6 +56,13 @@
                         <li><strong>Age Rating</strong> - <%=row["Age Rating"]%></li>
                         <li><strong>Price</strong> - £<%=row.Price%></li>
                     </ul>
+
+                    <form id="book-options" method="POST">
+                        <input name="isbn" type="text" placeholder="" 
+                            style="display: none;" value=<%=row.ISBN %>>
+                        <input type="submit" name="reviews" value="View Reviews">
+                        <input type="submit" name="purchase" value="Purchase Book">
+                    </form> 
                 </div>
             <% }); %>
         </section>

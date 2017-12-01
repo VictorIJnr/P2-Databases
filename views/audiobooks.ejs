@@ -47,9 +47,15 @@
                             <li><strong>Age Rating</strong> - <%=row["Age Rating"]%></li>
                             <li><strong>Price</strong> - £<%=row.Price%></li>
                         </ul>
+
+                        <form id="book-options" method="POST">
+                            <input name="isbn" type="text" placeholder="" 
+                                style="display: none;" value=<%=row.ISBN %>>
+                            <input type="submit" name="reviews" value="View Reviews">
+                            <input type="submit" name="purchase" value="Purchase Book">
+                        </form> 
                     </div>
                 <% }); %>
-                            <!--li>Average Rating - 7.25</li-->
         </section>
     </body> 
 </html>

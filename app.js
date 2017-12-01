@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('cookie-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
@@ -10,7 +11,9 @@ var audiobooks = require('./routes/audiobooks');
 var authors = require('./routes/authors');
 var popular = require('./routes/popular');
 var purchases = require('./routes/purchases');
+var reviews = require('./routes/reviews');
 var signup = require("./routes/signup");
+var login = require("./routes/login");
 var users = require('./routes/users');
 
 var app = express();
@@ -26,14 +29,21 @@ app.set('view engine', 'ejs');
 app.use(express.static(publicPath = path.join(__dirname, 'public')));
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    name: 'session',
+    keys: ['key1', 'key2'],
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 
 app.use('/CS3101', index);
 app.use(indexPath + '/audiobooks', audiobooks);
 app.use(indexPath + '/authors', authors);
 app.use(indexPath + '/popular', popular);
 app.use(indexPath + '/purchases', purchases);
+app.use(indexPath + '/reviews', reviews);
 app.use(indexPath + '/users', users);
 app.use(indexPath + '/signup', signup);
+app.use(indexPath + '/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

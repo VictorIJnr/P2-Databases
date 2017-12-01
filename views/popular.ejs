@@ -74,8 +74,8 @@
                         <li><strong>Price</strong> - <%=row.Price%></li>
                     </ul>
 
-                    <form id="search-form" method="POST">
-                        <input id="search" name="isbn" type="text" placeholder="" 
+                    <form id="book-options" method="POST">
+                        <input name="isbn" type="text" placeholder="" 
                             style="display: none;" value=<%=row.ISBN %>>
                         <input type="submit" name="reviews" value="View Reviews">
                         <input type="submit" name="purchase" value="Purchase Book">

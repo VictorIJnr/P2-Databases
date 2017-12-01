@@ -5,6 +5,7 @@ body {
 }
 
 input {
+    display: block;
     font-size: 30px;
     color: #444;
 
@@ -14,8 +15,8 @@ input {
     background: 0;
 }
 
-input[type=submit]:hover {
-    cursor: pointer;
+input[type=submit] {
+    margin-top: 25vh;
 }
 
 #spacing {

@@ -7,31 +7,31 @@
         <% include ./partials/headercss.ejs %>
 
         <link href="/css/standard.css" rel="stylesheet">
+        <link href="/css/accounts.css" rel="stylesheet">
         <link href="/css/navigation.css" rel="stylesheet">
-        <link href="/css/users.css" rel="stylesheet">
 
         <!--Only needed if running on the host servers-->
         <link href="/P2 - Front-end Design/public/css/standard.css" rel="stylesheet">
+        <link href="/P2 - Front-end Design/public/css/accounts.css" rel="stylesheet">
         <link href="/P2 - Front-end Design/public/css/navigation.css" rel="stylesheet">
-        <link href="/P2 - Front-end Design/public/css/users.css" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
 
-        <script src="/index.js"></script>
+        <script src="/js/signup.js"></script>
+        <script src="/P2 - Front-end Design/public/js/signup.js"></script>
     </head>
 
     <body>
         <% include ./partials/header.ejs %>
 
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <input type="password" placeholder="Re-enter Password" required>
-            <input type="text" placeholder="Full Name" required>
-            <input type="date" placeholder="Date of Birth" required> Date of Birth
-            <input type="email" placeholder="Email" required>
-            <input type="submit" placeholder="Sign Up">
+        <form id="new-user" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input id="ogPassword" type="password" name="password" placeholder="Password" required>
+            <input id="rePassword" type="password" name="repassword" placeholder="Re-enter Password" required>
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="date" name="dob" placeholder="Date of Birth" required> Date of Birth
+            <input type="submit" value="Sign Up">
         </form>
     </body>
 </html>

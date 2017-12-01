@@ -24,16 +24,19 @@
             <!-- <img src="https://images.pexels.com/photos/374912/pexels-photo-374912.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" alt="OOPS"> -->
         </div>
         <div class="overlay">
-            <h1>Bookstream.co.uk&nbsp; Hi Beth :D</h1>
+            <h1>Bookstream.co.uk</h1>
             <nav class="navigation">
                 <ul>
                     <li><a id="allBooks" href="CS3101/audiobooks">All Audiobooks</a></li>
                     <li><a href="CS3101/authors">Audiobooks by Author</a></li>
                     <li><a href="CS3101/popular">Popular Audiobooks</a></li>
+                    <%if (2 < 1) { %>
+                        <li><a href="CS3101/personal">Your Audiobooks</a></li>
+                    <% } %>
                 </ul>
             </nav>
 
-            <a class="accounts left" href="">Log In</a>
+            <a class="accounts left" href="CS3101/login">Log In</a>
             <a class="accounts right" href="CS3101/signup">Sign Up</a>
         </div>
     </body>

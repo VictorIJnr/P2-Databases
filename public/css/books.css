@@ -1,10 +1,13 @@
-input[type=submit] {
-    display: block;
-    margin-left: 5vw;
+#book-options input[type=submit] {
+    display: inline-block;
+    margin-right: 5vw;
     margin-top: 2.5vh;
+
     background: inherit;
     border: 0;
-    border-bottom: 1px solid; 
+
+    border-bottom: 1px solid #666;
+    font-size: 25px;
 }
 
 #all-books {
