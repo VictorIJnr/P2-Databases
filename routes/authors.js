@@ -10,11 +10,11 @@ router.post('/', function(req, res, next) {
     if (req.body.author) mysql.authorBooks(res, req.body.author);    
     if (req.body.reviews) {
         var isbn = encodeURIComponent(req.body.isbn);
-        res.redirect("/CS3101/reviews?isbn=" + isbn);
+        res.redirect("/reviews?isbn=" + isbn);
     }
     if (req.body.purchase) {
         var isbn = encodeURIComponent(req.body.isbn);
-        res.redirect("/CS3101/purchases?isbn=" + isbn);
+        res.redirect("/purchases?isbn=" + isbn);
     }
 });
   
