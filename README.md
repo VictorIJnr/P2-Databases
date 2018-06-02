@@ -3,6 +3,9 @@ P2 – Front-end Design & Implementation
 ### What's this nonsense?
 Please don't call it nonsense it's **_very_** useful. So this ~**_NONSENSE_**~ practical is my implementation of a _website_ which streams audiobooks to its customers. Basically a poor man's Audible. However, this is no mere website, oh no. This is **_Bookstream.co.uk_** they store their customer data on my MySQL server hosted by St Andrews and I have to perform queries on the data and serve the appropriate responses to the user. Pretty standard stuff.
 
+### Bruh, it doesn't even work!
+Well... yeah I know. That's because when I deployed the app on Heroku, St Andrews won't let me connect to the database necessary for some parts of the website. From my _"testing"_ it seems that you should avoid **Popular Audiobooks** and **All Audiobooks**. You can look at the Log In and Sign Up screens if you want to (they're incredibly boring so I'd advise you against it) but if you complete and send the form, the site will crash on you. So don't do that. It's a shame, the Popular Audiobooks page actually looked really cool, but I don't know of a way to make the St Andrews servers see this as an authentic request from their own servers... Sorry :(
+
 Welcome to v2.0.0!
 ------------------
 
